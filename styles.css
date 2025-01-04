@@ -1,0 +1,241 @@
+:root {
+  --pomodoro: #ff6f61; /* Coral */
+  --shortBreak: #6b5b95; /* Slate Blue */
+  --longBreak: #88b04b; /* Olive Green */
+  --background: url('aura.png'); /* Background image */
+  --button-primary: #ffffff; /* White */
+  --button-active: #dcdcdc; /* Light Gray */
+  --text-color: #333; /* Dark Gray */
+}
+
+body {
+  background: var(--background) no-repeat center center fixed;
+  background-size: cover; /* Ensures the image covers the entire background */
+  color: var(--text-color);
+  font-family: 'Lato', sans-serif;
+  transition: background-color 1s ease;
+  user-select: none;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+progress {
+  border-radius: 2px;
+  width: 100%; /* Ensure it spans the full width of the viewport */
+  height: 12px;
+  position: fixed;
+  top: 0;
+  left: 0; /* Ensure it starts from the very left */
+  background-color: rgba(0, 0, 0, 0.1); /* Background color for the bar */
+}
+
+progress::-webkit-progress-bar {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+progress::-webkit-progress-value {
+  background-color: #fff;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  text-align: center;
+}
+
+.clock {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 15rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color); /* Apply text color to the clock */
+}
+
+.mode-button {
+  font-size: 16px;
+  height: 28px;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 300;
+  color: var(--text-color); /* Apply text color to mode buttons */
+  border: 1px solid transparent;
+  margin: 0px;
+  border-radius: 4px;
+  padding: 2px 12px;
+  background: var(--button-primary);
+}
+
+.mode-button.active {
+  border-color: var(--button-active);
+  background: var(--button-active);
+}
+
+.main-button {
+  cursor: pointer;
+  box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+  font-size: 22px;
+  height: 55px;
+  text-transform: uppercase;
+  color: var(--text-color); /* Apply text color to main button */
+  font-weight: bold;
+  width: 200px;
+  background-color: var(--button-primary);
+  border-width: initial;
+  border-style: none;
+  margin: 20px 0px 0px;
+  padding: 0px 12px;
+  border-radius: 4px;
+  transition: color 0.5s ease-in-out 0s;
+}
+
+button:focus, button:active {
+  outline: none;
+}
+
+.main-button.active {
+  transform: translateY(6px);
+  box-shadow: none;
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Add to your existing styles.css */
+
+.settings-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #6b5b95; /* Slate Blue */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+.settings-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-panel.hidden {
+  display: none;
+}
+
+.settings-content label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.settings-content input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.settings-content button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #6b5b95; /* Slate Blue */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.settings-content button:hover {
+  background-color: #5a4a8d; /* Darker Slate Blue */
+}
+
+.settings-content button#close-settings {
+  background-color: #ff6f61; /* Coral */
+  margin-top: 10px;
+}
+
+.settings-content button#close-settings:hover {
+  background-color: #e05e50; /* Darker Coral */
+}
+
+.stats-panel {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.stats-panel h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+/* Existing styles remain unchanged */
+
+.playlist-container {
+  position: fixed; /* Fixes the position relative to the viewport */
+  bottom: 10px; /* Distance from the bottom of the viewport */
+  left: 10px; /* Distance from the left side of the viewport */
+  width: 300px; /* Width of the playlist container */
+  height: 80px; /* Height of the playlist container */
+  overflow: hidden; /* Hides any overflow from the iframe */
+  border-radius: 12px; /* Rounded corners for the container */
+  background-color: #fff; /* Background color (optional, for visibility) */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for better visibility */
+}
+
+iframe {
+  width: 100%; /* Full width of the playlist container */
+  height: 100%; /* Full height of the playlist container */
+  border: none; /* Remove default border */
+}
+
+.achievements {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #ff5722; /* Adjust as needed */
+}
+
+
+@media screen and (max-width: 550px) {
+  .playlist-container {
+    width: 200px; /* Adjust width for smaller screens */
+    height: 60px; /* Adjust height for smaller screens */
+  }
+}

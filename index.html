@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Pomodoro Clock</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <button id="settings-button" class="settings-button">⚙️</button>
+  
+  <main class="app">
+    <progress id="js-progress" value="0"></progress>
+    <div class="progress-bar"></div>
+    <div class="timer">
+      <div class="button-group mode-buttons" id="js-mode-buttons">
+        <button data-mode="pomodoro" class="button active mode-button" id="js-pomodoro">Focus</button>
+        <button data-mode="shortBreak" class="button mode-button" id="js-short-break">Short break</button>
+        <button data-mode="longBreak" class="button mode-button" id="js-long-break">Long break</button>
+      </div>
+      <div class="clock" id="js-clock">
+        <span id="js-minutes">25</span>:<span id="js-seconds">00</span>
+      </div>
+      <button class="main-button" data-action="start" id="js-btn">Start</button>
+    </div>
+    <div class="playlist-container">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4Eaqv2ZjzoQmG0myohWtYi?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </main>
+
+  <div id="settings-panel" class="settings-panel hidden">
+    <div class="settings-content">
+      <label for="pomodoro-duration">Pomodoro Duration (minutes):</label>
+      <input type="number" id="pomodoro-duration" value="25" min="1">
+
+      <label for="short-break-duration">Short Break Duration (minutes):</label>
+      <input type="number" id="short-break-duration" value="5" min="1">
+
+      <label for="long-break-duration">Long Break Duration (minutes):</label>
+      <input type="number" id="long-break-duration" value="15" min="1">
+
+      <label for="long-break-interval">Long Break Interval (number of Pomodoro sessions):</label>
+      <input type="number" id="long-break-interval" value="4" min="1">
+      
+      <button id="save-settings">Save Settings</button>
+      <button id="close-settings">Close</button>
+    </div>
+  </div>
+
+  <div class="hidden">
+    <audio src="backtowork.mp3" data-sound="pomodoro"></audio>
+    <audio src="break.mp3" data-sound="shortBreak"></audio>
+    <audio src="break.mp3" data-sound="longBreak"></audio>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
